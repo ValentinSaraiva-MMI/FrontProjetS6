@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Gothic+A1:wght@400;800&family=Montserrat:wght@400;500;600;700&display=swap');
+
+// couleurs
+$color-main: #1CCCE9;
+$color-main_darken: #14A1B8;
+$color-white: #F5F5F5;
+$color-white_darken: #CDCDCD;
+$color-gray: #949494;
+$color-gray_darken: #2B2E34;
+$color-black: #191C23;
+
+// taille texte
+$pc-font_regular: 1rem;
+$pc-font_semibig: 1.25rem;
+$pc-font_big: 2rem;
+$pc-font_mega: 3rem;
+$pc-font_extra: 4rem;
+
+$mobile-font_regular: 0.8rem;
+$mobile-font_semibig: 1rem;
+$mobile-font_big: 1.5rem;
+$mobile-font_mega: 2rem;
+$mobile-font_extra: 3rem;
+
+// gras texte
+$font_weight-regular: 400;
+$font_weight-bold: 800;
+
+// familles texte
+$font-title: 'Fugaz One', sans-serif;
+$font-texte: 'Gothic A1', sans-serif;
+
+// marges
+$m-small: 20px;
+$m-litle: 25px;
+$m-medium: 50px;
+$m-big: 100px;
+
+// media query / tailles d'écrans
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xl2: 1536px;

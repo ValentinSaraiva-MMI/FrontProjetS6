@@ -1,0 +1,94 @@
+@mixin small {
+    @media screen and (max-width: $sm) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media screen and (min-width: $md) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media screen and (min-width: $lg) {
+        @content;
+    }
+}
+
+@mixin xlarge {
+    @media screen and (min-width: $xl) {
+        @content;
+    }
+}
+
+@mixin xxlarge {
+    @media screen and (min-width: $xl2) {
+        @content;
+    }
+}
+
+
+@mixin h1 {
+    font-family: $font-title;
+    font-size: $mobile-font_extra;
+    text-transform: uppercase;
+
+    @include medium {
+        font-size: $pc-font_extra;
+    }
+}
+
+@mixin h2 {
+    font-family: $font-title;
+
+    font-size: $mobile-font_mega;
+    text-transform: uppercase;
+
+    @include medium {
+        font-size: $pc-font_mega;
+    }
+}
+
+
+@mixin p {
+    font-family: $font-texte;
+    font-size: $mobile-font_regular;
+    font-weight: $font_weight-regular;
+
+    @include medium {
+        font-size: $pc-font_regular;
+    }
+}
+
+@mixin bouton {
+    font-family: $font-title;
+    font-size: $mobile-font_regular;
+    text-transform: uppercase;
+
+    @include medium {
+        font-size: $pc-font_regular;
+    }
+}
+
+@mixin bouton_big {
+    font-size: $mobile-font_semibig;
+
+    @include medium {
+        font-size: $pc-font_semibig;
+    }
+}
+
+@mixin card_title {
+    font-family: $font-title;
+    font-size: $mobile-font_big;
+    text-transform: uppercase;
+
+    @include medium {
+        font-size: $pc-font_big;
+    }
+}
+
+@mixin teste {
+    border: 2px solid red;
+}

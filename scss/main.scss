@@ -1,0 +1,64 @@
+@import '@/scss/foundations/reset';
+@import '@/scss/foundations/variables';
+
+
+*,
+*::before,
+*::after {
+    @include p;
+    box-sizing: border-box;
+}
+
+body {
+    color: $color-white;
+    background-color: $color-black;
+    line-height: 1.5;
+}
+
+.my_section {
+    padding: $m-medium $m-small;
+}
+
+h1,
+.h1 {
+    @include h1;
+    margin-bottom: $m-litle;
+}
+
+h2,
+.h2 {
+    @include h2;
+    margin-bottom: $m-litle;
+    text-align: center;
+}
+
+h3,
+.h3 {
+    @include card_title;
+}
+
+p {
+    @include p;
+}
+
+.bleu {
+    color: $color-main;
+}
+
+button {
+    @include bouton;
+}
+
+@include medium {
+    .my_section {
+        padding: $m-big;
+    }
+
+    // h1 {
+    //     margin-bottom: $m-big;
+    // }
+
+    h2 {
+        margin-bottom: $m-medium;
+    }
+}
