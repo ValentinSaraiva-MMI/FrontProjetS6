@@ -30,7 +30,7 @@
 
 
 @mixin h1 {
-    font-family: $font-title;
+    font-family: $font;
     font-size: $mobile-font_extra;
     text-transform: uppercase;
 
@@ -40,7 +40,7 @@
 }
 
 @mixin h2 {
-    font-family: $font-title;
+    font-family: $font;
 
     font-size: $mobile-font_mega;
     text-transform: uppercase;
@@ -52,7 +52,7 @@
 
 
 @mixin p {
-    font-family: $font-texte;
+    font-family: $font;
     font-size: $mobile-font_regular;
     font-weight: $font_weight-regular;
 
@@ -62,7 +62,7 @@
 }
 
 @mixin bouton {
-    font-family: $font-title;
+    font-family: $font;
     font-size: $mobile-font_regular;
     text-transform: uppercase;
 
@@ -80,7 +80,7 @@
 }
 
 @mixin card_title {
-    font-family: $font-title;
+    font-family: $font;
     font-size: $mobile-font_big;
     text-transform: uppercase;
 
