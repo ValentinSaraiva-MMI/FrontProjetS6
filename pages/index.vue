@@ -1,15 +1,10 @@
 <template>
   <h1>Test</h1>
 
-  <MyIcon color="white" name="earth" />
+  <MyIcon background size="big" color="full" name="bookmark" />
 </template>
 
-<style lang="scss">
-// .icon {
-//   color: red;
-//   fill: aqua;
-// }
-</style>
+<style lang="scss"></style>
 
 <script setup>
 import MyIcon from "../components/elements/MyIcon.vue";
