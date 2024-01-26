@@ -10,8 +10,8 @@
 }
 
 body {
-    color: $color-white;
-    background-color: $color-black;
+    color: $white;
+    background-color: $black;
     line-height: 1.5;
 }
 
@@ -41,9 +41,7 @@ p {
     @include p;
 }
 
-.bleu {
-    color: $color-main;
-}
+
 
 button {
     @include bouton;

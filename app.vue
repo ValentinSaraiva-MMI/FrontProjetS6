@@ -1,10 +1,10 @@
 <template>
-  <p class="test">cum</p>
+  <NuxtPage />
 </template>
 
 <style lang="scss">
 .test {
-  color: $color-main;
+  color: $green;
 }
 </style>
 
