@@ -41,10 +41,8 @@
 
 @mixin h2 {
     font-family: $font;
-
     font-size: $mobile-font_mega;
-    text-transform: uppercase;
-
+   
     @include medium {
         font-size: $pc-font_mega;
     }

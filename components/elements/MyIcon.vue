@@ -8,10 +8,10 @@
 
 <style lang="scss" scoped>
 .icon {
-  display: flex; // Utilisez flex pour centrer l'icône
+  display: flex;
   align-items: center;
-  justify-content: center; // Pour centrer horizontalement
-  border-radius: 50%; // Utilisez 50% pour créer un cercle
+  justify-content: center;
+  border-radius: 50%;
   height: 42px;
   width: 42px;
 

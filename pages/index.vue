@@ -1,11 +1,27 @@
 <template>
-  <h1>Test</h1>
+  <MyIcon background size="big" color="red" name="cross" />
 
-  <MyIcon background size="big" color="full" name="bookmark" />
+  <categorie class="categorie" name="partage">
+    <span class="categorie_slot">Partage</span>
+  </categorie>
+
+  <categorie class="categorie" name="sport">
+    <span class="categorie_slot">Fitness</span>
+  </categorie>
+
+  <Mycards></Mycards>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.categorie {
+  &_slot {
+    @include p;
+    margin-left: 10px;
+  }
+}
+</style>
 
 <script setup>
 import MyIcon from "../components/elements/MyIcon.vue";
+import categorie from "../components/elements/categorie.vue";
 </script>
