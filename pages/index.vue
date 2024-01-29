@@ -9,7 +9,13 @@
     <span class="categorie_slot">Fitness</span>
   </categorie>
 
-  <Mycards></Mycards>
+  <Mycards
+    :title="'test'"
+    :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
+        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
+        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw pie
+        wafer.`"
+  />
 </template>
 
 <style lang="scss">
