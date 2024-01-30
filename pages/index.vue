@@ -1,5 +1,6 @@
 <template>
   <MyIcon background size="big" color="red" name="cross" />
+  <MyIcon background size="big" color="full" name="bookmark" />
 
   <Mycategorie class="categorie" name="partage">
     <span class="categorie_slot">Partage</span>

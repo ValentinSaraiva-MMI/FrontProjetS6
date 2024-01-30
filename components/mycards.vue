@@ -17,7 +17,13 @@
       <MyIcon background size="big" color="red" name="cross" />
       <MyIcon background size="big" color="green" name="check" />
     </div>
-    <MyIcon class="btn_favoris" background color="gold" name="favoris" />
+    <MyIcon
+      class="btn_favoris"
+      background
+      :color="iconColor"
+      name="bookmark"
+      @click="toggleColor"
+    />
   </div>
 </template>
 
@@ -72,7 +78,7 @@
 
   img {
     // margin-top: 2rem;
-    min-height: 210px;
+    min-height: 240px;
     border-radius: 0px 0px 30px 30px;
     object-fit: cover;
   }
@@ -95,4 +101,10 @@ defineProps({
   description: String,
   image: String,
 });
+
+const iconColor = ref("full");
+
+const toggleColor = () => {
+  iconColor.value = iconColor.value === "full" ? "empty" : "full"; // Change the color to 'red' when it's 'full', and vice versa
+};
 </script>
