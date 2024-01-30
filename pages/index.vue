@@ -1,13 +1,13 @@
 <template>
   <MyIcon background size="big" color="red" name="cross" />
 
-  <categorie class="categorie" name="partage">
+  <Mycategorie class="categorie" name="partage">
     <span class="categorie_slot">Partage</span>
-  </categorie>
+  </Mycategorie>
 
-  <categorie class="categorie" name="sport">
+  <Mycategorie class="categorie" name="sport">
     <span class="categorie_slot">Fitness</span>
-  </categorie>
+  </Mycategorie>
 
   <Mycards
     :title="'test'"
@@ -29,5 +29,5 @@
 
 <script setup>
 import MyIcon from "../components/elements/MyIcon.vue";
-import categorie from "../components/elements/categorie.vue";
+import Mycategorie from "../components/elements/Mycategorie.vue";
 </script>

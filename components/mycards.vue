@@ -5,6 +5,10 @@
       <p class="card_texte_description">{{ description }}</p>
     </div>
 
+    <Mycategorie class="categorie2" name="partage">
+      <span class="categorie2_slot">Partage</span>
+    </Mycategorie>
+
     <div class="card_image">
       <img src="/images/fitness.jpg" alt="image représentant le fitness" />
     </div>
@@ -13,10 +17,30 @@
       <MyIcon background size="big" color="red" name="cross" />
       <MyIcon background size="big" color="green" name="check" />
     </div>
+    <MyIcon class="btn_favoris" background color="gold" name="favoris" />
   </div>
 </template>
 
 <style lang="scss">
+.btn_favoris {
+  position: relative;
+  top: -50px;
+  left: 75vw;
+}
+
+.categorie2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &_slot {
+    @include p;
+    margin-left: 10px;
+    color: $white;
+  }
+}
+
 .card {
   width: 83vw;
   height: 30rem;
@@ -47,7 +71,7 @@
   //   }
 
   img {
-    margin-top: 2rem;
+    // margin-top: 2rem;
     min-height: 210px;
     border-radius: 0px 0px 30px 30px;
     object-fit: cover;
@@ -63,6 +87,7 @@
 </style>
 
 <script setup>
+import Mycategorie from "../components/elements/Mycategorie.vue";
 import MyIcon from "../components/elements/MyIcon.vue";
 
 defineProps({
