@@ -48,6 +48,7 @@
 }
 
 .card {
+  margin-top: 3rem;
   width: 83vw;
   height: 30rem;
   background-color: $beige;

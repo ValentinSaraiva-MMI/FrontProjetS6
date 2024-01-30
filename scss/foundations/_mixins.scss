@@ -50,7 +50,7 @@
 
 @mixin h6 {
     font-family: $font;
-    font-size: $mobile-font_semibig;
+    font-size: $mobile-font_reguler;
    
     @include medium {
         font-size: $pc-font_mega;

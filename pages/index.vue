@@ -1,5 +1,5 @@
 <template>
-  <MyIcon background size="big" color="red" name="cross" />
+  <!-- <MyIcon background size="big" color="red" name="cross" />
   <MyIcon background size="big" color="full" name="bookmark" />
 
   <Mycategorie class="categorie" name="partage">
@@ -8,15 +8,23 @@
 
   <Mycategorie class="categorie" name="sport">
     <span class="categorie_slot">Fitness</span>
-  </Mycategorie>
+  </Mycategorie> -->
 
-  <Mycards
-    :title="'test'"
-    :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
+  <section>
+    <Mycards
+      :title="'test'"
+      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
         lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw pie
-        wafer.`"
-  />
+        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
+    />
+
+    <Mycards
+      :title="'test'"
+      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
+        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
+        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
+    />
+  </section>
 </template>
 
 <style lang="scss">
@@ -25,6 +33,12 @@
     @include p;
     margin-left: 10px;
   }
+}
+
+section {
+  display: grid;
+  justify-content: center;
+  gap: 1rem;
 }
 </style>
 
