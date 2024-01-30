@@ -9,8 +9,9 @@
       <img src="/images/fitness.jpg" alt="image représentant le fitness" />
     </div>
 
-    <div class="test">
+    <div class="card_btn">
       <MyIcon background size="big" color="red" name="cross" />
+      <MyIcon background size="big" color="green" name="check" />
     </div>
   </div>
 </template>
@@ -22,10 +23,11 @@
   background-color: $beige;
   border-radius: 30px;
   color: $black;
+  position: relative;
 
   &_texte {
     height: 50%;
-    margin: 20px;
+    padding: 20px;
 
     &_title {
       @include h2;
@@ -37,15 +39,26 @@
     }
   }
 
-  &_image {
-    height: 50%;
-    position: relative;
-    bottom: 10%;
-  }
-}
+  //   &_image {
+  //     // height: 50%;
+  //     // margin-top: 5px;
+  //     // position: relative;
+  //     // top: 5px;
+  //   }
 
-img {
-  border-radius: 0px 0px 30px 30px;
+  img {
+    margin-top: 2rem;
+    min-height: 210px;
+    border-radius: 0px 0px 30px 30px;
+    object-fit: cover;
+  }
+
+  &_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+  }
 }
 </style>
 
