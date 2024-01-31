@@ -17,17 +17,10 @@
         lemon drops gummi bears powder pudding sweet. Topping cake chocolate
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     />
-
-    <Mycards
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .categorie {
   &_slot {
     @include p;
@@ -39,6 +32,32 @@ section {
   display: grid;
   justify-content: center;
   gap: 1rem;
+  transform: translatey(15%);
+  border: 2px solid red;
+
+  @include small {
+    transform: translatey(15%);
+    border: 2px solid blue;
+  }
+  @include medium {
+    border: 2px solid green;
+    transform: translatey(10%);
+  }
+  @include large {
+    border: 2px solid yellow;
+    transform: translatey(10%);
+  }
+  @include xlarge {
+    border: 2px solid purple;
+  }
+
+  @include xxlarge {
+    border: 2px solid pink;
+  }
+}
+
+a:active {
+  background-color: red;
 }
 </style>
 

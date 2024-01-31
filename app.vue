@@ -1,5 +1,8 @@
 <template>
   <NuxtPage />
+  <footer>
+    <Myfooter />
+  </footer>
 </template>
 
 <style lang="scss">
@@ -8,4 +11,6 @@
 }
 </style>
 
-<script setup></script>
+<script setup>
+import Myfooter from "../components/elements/Myfooter.vue";
+</script>

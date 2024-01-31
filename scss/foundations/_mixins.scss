@@ -53,7 +53,7 @@
     font-size: $mobile-font_reguler;
    
     @include medium {
-        font-size: $pc-font_mega;
+        font-size: $pc-font_regular; 
     }
 }
 

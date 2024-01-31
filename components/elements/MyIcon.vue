@@ -42,6 +42,11 @@
     stroke: $gold;
   }
 
+  &.-emwhite {
+    fill: none;
+    stroke: $white;
+  }
+
   &.-full {
     fill: $gold;
   }
@@ -120,6 +125,7 @@ const className = computed(() => ({
   "-gold": props.color === "gold",
   "-empty": props.color === "empty",
   "-full": props.color === "full",
+  "-emwhite": props.color === "emwhite",
   "-background": props.background,
 }));
 </script>

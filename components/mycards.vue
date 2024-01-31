@@ -31,7 +31,15 @@
 .btn_favoris {
   position: relative;
   top: -50px;
-  left: 75vw;
+  left: 85%;
+
+  //   @include medium {
+  //     left: 80%;
+  //   }
+
+  //   @include medium {
+  //     left: 80%;
+  //   }
 }
 
 .categorie2 {
@@ -48,13 +56,34 @@
 }
 
 .card {
-  margin-top: 3rem;
   width: 83vw;
   height: 30rem;
   background-color: $beige;
   border-radius: 30px;
   color: $black;
   position: relative;
+  border: 2px solid red;
+  max-width: 600px;
+  max-height: 600px;
+
+  @include small {
+    border: 2px solid blue;
+  }
+  @include medium {
+    border: 2px solid green;
+    max-height: 600px;
+    // max-width: 66.4vw;
+  }
+  @include large {
+    border: 2px solid yellow;
+  }
+  @include xlarge {
+    border: 2px solid purple;
+  }
+
+  @include xxlarge {
+    border: 2px solid pink;
+  }
 
   &_texte {
     height: 50%;
@@ -80,6 +109,7 @@
   img {
     // margin-top: 2rem;
     min-height: 240px;
+    max-height: 300px;
     border-radius: 0px 0px 30px 30px;
     object-fit: cover;
   }
