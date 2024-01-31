@@ -36,16 +36,16 @@ section {
   border: 2px solid red;
 
   @include small {
-    transform: translatey(15%);
+    // transform: translatey(15%);
     border: 2px solid blue;
   }
   @include medium {
     border: 2px solid green;
-    transform: translatey(10%);
+    // transform: translatey(10%);
   }
   @include large {
     border: 2px solid yellow;
-    transform: translatey(10%);
+    // transform: translatey(10%);
   }
   @include xlarge {
     border: 2px solid purple;
