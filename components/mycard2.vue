@@ -10,10 +10,7 @@
     </Mycategorie>
 
     <div class="card_image">
-      <img
-        src="https://source.unsplash.com/random/1000x1000/?sport"
-        alt="image représentant le fitness"
-      />
+      <img :src="image" alt="Image représentant le fitness" />
     </div>
 
     <div class="card_btn">
@@ -30,115 +27,8 @@
   </div>
 </template>
 
-<style lang="scss">
-.btn_favoris {
-  position: relative;
-  top: -50px;
-  left: 85%;
-
-  //   @include medium {
-  //     left: 80%;
-  //   }
-
-  //   @include medium {
-  //     left: 80%;
-  //   }
-}
-
-.categorie2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &_slot {
-    @include p;
-    margin-left: 10px;
-    color: $white;
-  }
-}
-
-.card {
-  width: 83vw;
-  height: 30rem;
-  background-color: $beige;
-  border-radius: 30px;
-  color: $black;
-  position: relative;
-  border: 2px solid red;
-  max-width: 600px;
-  max-height: 600px;
-
-  //   width: 100%;
-  //   height: 100%;
-  //   position: absolute;
-  //   border-radius: 20px;
-
-  transform: translateZ(calc(-30px * var(--i)))
-    translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
-  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.5s;
-
-  @include small {
-    border: 2px solid blue;
-  }
-  @include medium {
-    border: 2px solid green;
-    max-height: 600px;
-    // max-width: 66.4vw;
-  }
-  @include large {
-    border: 2px solid yellow;
-  }
-  @include xlarge {
-    border: 2px solid purple;
-  }
-
-  @include xxlarge {
-    border: 2px solid pink;
-  }
-
-  &_texte {
-    height: 50%;
-    padding: 20px;
-
-    &_title {
-      @include h2;
-      font-weight: 600;
-    }
-
-    &_description {
-      @include h6;
-    }
-  }
-
-  //   &_image {
-  //     // height: 50%;
-  //     // margin-top: 5px;
-  //     // position: relative;
-  //     // top: 5px;
-  //   }
-
-  img {
-    // margin-top: 2rem;
-    min-height: 240px;
-    max-height: 300px;
-    border-radius: 0px 0px 30px 30px;
-    object-fit: cover;
-  }
-
-  &_btn {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: -2rem;
-  }
-}
-</style>
-
 <script setup>
+import { ref } from "vue";
 import Mycategorie from "../components/elements/Mycategorie.vue";
 import MyIcon from "../components/elements/MyIcon.vue";
 
@@ -151,8 +41,66 @@ defineProps({
 const iconColor = ref("full");
 
 const toggleColor = () => {
-  iconColor.value = iconColor.value === "full" ? "empty" : "full"; // Change the color to 'red' when it's 'full', and vice versa
+  iconColor.value = iconColor.value === "full" ? "empty" : "full";
 };
-
-console.log("tests");
 </script>
+
+<style lang="scss">
+.btn_favoris {
+  position: relative;
+  top: -50px;
+  left: 85%;
+}
+
+.categorie2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &_slot {
+    margin-left: 10px;
+  }
+}
+
+.card {
+  width: 83vw;
+  height: 30rem;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  color: #333;
+  position: relative;
+  border: 2px solid red;
+  max-width: 600px;
+  max-height: 600px;
+  transform: translateZ(calc(-30px * var(--i)))
+    translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.5s;
+
+  .card_texte {
+    height: 50%;
+    padding: 20px;
+
+    .card_texte_title {
+      font-weight: 600;
+    }
+  }
+
+  .card_image img {
+    min-height: 240px;
+    max-height: 300px;
+    border-radius: 0px 0px 30px 30px;
+    object-fit: cover;
+  }
+
+  .card_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+  }
+}
+</style>
