@@ -88,16 +88,57 @@
   }
 }
 
-.iconCross {
-  border: red 2px solid;
-  position: fixed;
-  top: 50%;
-}
 .iconRight {
-  border: red 2px solid;
   position: fixed;
   top: 50%;
-  right: 1%;
+  right: 5%;
+
+  animation-name: iconeAnimation1;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  /*ne joue pas l'animation au début*/
+  animation-play-state: paused;
+}
+
+#like.trigger,
+#dislike.trigger {
+  animation-name: iconeAnimation2;
+}
+
+.iconCross {
+  z-index: 50;
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  animation-name: iconeAnimation1;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  /*ne joue pas l'animation au début*/
+  animation-play-state: paused;
+}
+
+@keyframes iconeAnimation1 {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes iconeAnimation2 {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 #swiper {
@@ -142,9 +183,11 @@ import { onMounted } from "vue";
 
 //CARD.JS
 class Card {
-  constructor({ imageUrl, onDismiss }) {
+  constructor({ imageUrl, onDismiss, onLike, onDislike }) {
     this.imageUrl = imageUrl;
     this.onDismiss = onDismiss;
+    this.onLike = onLike;
+    this.onDislike = onDislike;
     this.#init();
   }
 
@@ -223,10 +266,18 @@ class Card {
 
     setTimeout(() => {
       this.element.remove();
-    }, 1000);
+    }, 500);
 
     if (typeof this.onDismiss === "function") {
       this.onDismiss();
+    }
+    if (typeof this.onLike === "function" && direction === 1) {
+      this.onLike();
+      console.log("like");
+    }
+    if (typeof this.onDislike === "function" && direction === -1) {
+      this.onDislike();
+      console.log("Dislike");
     }
   };
 }
@@ -237,7 +288,10 @@ class Card {
 onMounted(() => {
   if (process.client) {
     // Vérifiez si le code s'exécute côté client
+
     const swiper = document.querySelector("#swiper");
+    const like = document.querySelector("#like");
+    const dislike = document.querySelector("#dislike");
 
     const urls = [
       "https://source.unsplash.com/random/1000x1000/?sport",
@@ -258,10 +312,22 @@ onMounted(() => {
 
     let cardCount = 0;
 
+    //function
     function appendNewCard() {
       const card = new Card({
-        imageUrl: urls[cardCount % 5],
+        imageUrl: urls[cardCount % 10],
         onDismiss: appendNewCard,
+        onLike: () => {
+          like.style.animationPlayState = "running";
+          // always trigger animation when toggling class
+          like.classList.toggle("trigger");
+        },
+
+        onDislike: () => {
+          dislike.style.animationPlayState = "running";
+          // always trigger animation when toggling class
+          dislike.classList.toggle("trigger");
+        },
       });
 
       // card.element.style.setProperty("--i", cardCount % 5);
@@ -274,7 +340,7 @@ onMounted(() => {
       });
     }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       appendNewCard();
     }
   }
