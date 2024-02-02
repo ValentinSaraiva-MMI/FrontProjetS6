@@ -74,6 +74,7 @@
   perspective: 1000px;
   perspective-origin: center 50%;
   justify-content: center;
+  align-items: center;
   transform-style: preserve-3d;
   gap: 1rem;
   transform: translatey(15%);
@@ -159,6 +160,12 @@ class Card {
     this.element.style.transform = `translate(${this.#offsetX}px, ${
       this.#offsetY
     }px) rotate(${rotate}deg)`;
+
+    //dismiss card when moving too far away
+    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
+      const direction = this.#offsetX > 0 ? 1 : -1;
+      this.#dismiss(direction);
+    }
   };
 
   #handleMouseUp = (e) => {
@@ -167,6 +174,22 @@ class Card {
     //transition when move back
     this.element.style.transition = "transform 0.5s";
     this.element.style.transform = "";
+  };
+
+  #dismiss = (direction) => {
+    this.#startPoint = null;
+    document.removeEventListener("mouseup", this.#handleMouseUp);
+    document.removeEventListener("mousemove", this.#handleMouseMove);
+
+    this.element.style.transition = "transform 1s";
+    this.element.style.transform = `translate(${
+      direction * window.innerWidth
+    }px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
+    // i = i--;
+
+    setTimeout(() => {
+      this.element.remove();
+    }, 1000);
   };
 }
 

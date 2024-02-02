@@ -64,21 +64,30 @@ const toggleColor = () => {
 }
 
 .card {
-  width: 83vw;
-  height: 30rem;
-  background-color: #f5f5f5;
-  border-radius: 30px;
-  color: #333;
-  position: relative;
-  border: 2px solid red;
-  max-width: 600px;
-  max-height: 600px;
-  transform: translateZ(calc(-30px * var(--i)))
-    translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
-  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.5s;
+  // background-color: #f5f5f5;
+  // border-radius: 30px;
+  // color: #333;
+  // position: relative;
+  // border: 2px solid red;
+  // max-width: 600px;
+  // max-height: 600px;
+  // transform: translateZ(calc(-30px * var(--i)))
+  //   translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
+  // filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  // cursor: pointer;
+  // user-select: none;
+  // transition: transform 0.5s;
+
+  // position: absolute;
+  // border-radius: 20px;
+  // overflow: hidden;
+
+  // transform: translateZ(calc(-30px * var(--i)))
+  //   translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
+  // filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  // cursor: pointer;
+  // user-select: none;
+  // transition: transform 0.5s;
 
   .card_texte {
     height: 50%;
@@ -89,14 +98,14 @@ const toggleColor = () => {
     }
   }
 
-  .card_image img {
+  img {
     min-height: 240px;
     max-height: 300px;
     border-radius: 0px 0px 30px 30px;
     object-fit: cover;
   }
 
-  .card_btn {
+  &_btn {
     width: 100%;
     display: flex;
     justify-content: space-evenly;

@@ -64,18 +64,18 @@
   background-color: $beige;
   border-radius: 30px;
   color: $black;
-  position: relative;
-  border: 2px solid red;
+  border: 2px solid rgb(0, 8, 255);
   max-width: 600px;
   max-height: 600px;
+  position: absolute;
+  overflow: hidden;
 
-  //   width: 100%;
-  //   height: 100%;
-  //   position: absolute;
-  //   border-radius: 20px;
+  top: 10%;
+  left: 25%;
+  transform: translate(-10%, -25%);
 
   transform: translateZ(calc(-30px * var(--i)))
-    translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
+    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
   filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
   cursor: pointer;
   user-select: none;
