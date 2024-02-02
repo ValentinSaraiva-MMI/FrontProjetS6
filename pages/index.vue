@@ -1,5 +1,8 @@
 <template>
   <!-- <MyIcon background size="big" color="red" name="cross" />
+
+
+
   <MyIcon background size="big" color="full" name="bookmark" />
 
   <Mycategorie class="categorie" name="partage">
@@ -10,6 +13,15 @@
     <span class="categorie_slot">Fitness</span>
   </Mycategorie> -->
 
+  <MyIcon
+    class="iconCross"
+    background
+    size="big"
+    color="red"
+    name="cross"
+    id="dislike"
+  />
+
   <section id="swiper">
     <!-- <Mycards
       style="--i: 0"
@@ -17,7 +29,7 @@
       :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
         lemon drops gummi bears powder pudding sweet. Topping cake chocolate
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
+    />  -->
 
     <!--
     <Mycards
@@ -57,6 +69,15 @@
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     /> -->
   </section>
+
+  <MyIcon
+    class="iconRight"
+    background
+    size="big"
+    color="green"
+    name="check"
+    id="like"
+  />
 </template>
 
 <style scoped lang="scss">
@@ -67,9 +88,21 @@
   }
 }
 
+.iconCross {
+  border: red 2px solid;
+  position: fixed;
+  top: 50%;
+}
+.iconRight {
+  border: red 2px solid;
+  position: fixed;
+  top: 50%;
+  right: 1%;
+}
+
 #swiper {
   height: 65vh;
-  width: 100vw;
+  width: 90vw;
   display: grid;
   perspective: 1000px;
   perspective-origin: center 50%;
@@ -109,8 +142,9 @@ import { onMounted } from "vue";
 
 //CARD.JS
 class Card {
-  constructor({ imageUrl }) {
+  constructor({ imageUrl, onDismiss }) {
     this.imageUrl = imageUrl;
+    this.onDismiss = onDismiss;
     this.#init();
   }
 
@@ -181,15 +215,19 @@ class Card {
     document.removeEventListener("mouseup", this.#handleMouseUp);
     document.removeEventListener("mousemove", this.#handleMouseMove);
 
-    this.element.style.transition = "transform 1s";
+    this.element.style.transition = "transform 0.9s";
     this.element.style.transform = `translate(${
       direction * window.innerWidth
     }px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
-    // i = i--;
+    this.element.classList.add("dismissing");
 
     setTimeout(() => {
       this.element.remove();
     }, 1000);
+
+    if (typeof this.onDismiss === "function") {
+      this.onDismiss();
+    }
   };
 }
 
@@ -206,7 +244,12 @@ onMounted(() => {
       "https://source.unsplash.com/random/1000x1000/?muscle",
       "https://source.unsplash.com/random/1000x1000/?fitness",
       "https://source.unsplash.com/random/1000x1000/?moutain",
-      "https://source.unsplash.com/random/1000x1000/?videogames",
+      "https://source.unsplash.com/random/1000x1000/?health",
+      "https://source.unsplash.com/random/1000x1000/?music",
+      "https://source.unsplash.com/random/1000x1000/?forest",
+      "https://source.unsplash.com/random/1000x1000/?art",
+      "https://source.unsplash.com/random/1000x1000/?love",
+      "https://source.unsplash.com/random/1000x1000/?care",
     ];
 
     const titre = ["Titre1", "Titre2"];
@@ -218,11 +261,17 @@ onMounted(() => {
     function appendNewCard() {
       const card = new Card({
         imageUrl: urls[cardCount % 5],
+        onDismiss: appendNewCard,
       });
 
-      card.element.style.setProperty("--i", cardCount % 5);
+      // card.element.style.setProperty("--i", cardCount % 5);
       swiper.append(card.element);
       cardCount++;
+
+      const cards = swiper.querySelectorAll(".card:not(.dismissing)");
+      cards.forEach((card, index) => {
+        card.style.setProperty("--i", index);
+      });
     }
 
     for (let i = 0; i < 5; i++) {
