@@ -80,7 +80,85 @@
   />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+.card {
+  width: 83vw;
+  height: 30rem;
+  background-color: $beige;
+  border-radius: 30px;
+  color: $black;
+  border: 2px solid rgb(0, 8, 255);
+  max-width: 600px;
+  max-height: 600px;
+  position: absolute;
+  overflow: hidden;
+  top: 10%;
+  left: 25%;
+  transform: translate(-10%, -25%);
+
+  transform: translateZ(calc(-30px * var(--i)))
+    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.5s;
+
+  @include small {
+    border: 2px solid blue;
+  }
+  @include medium {
+    border: 2px solid green;
+    max-height: 600px;
+    // max-width: 66.4vw;
+  }
+  @include large {
+    border: 2px solid yellow;
+  }
+  @include xlarge {
+    border: 2px solid purple;
+  }
+
+  @include xxlarge {
+    border: 2px solid pink;
+  }
+
+  &_texte {
+    height: 50%;
+    padding: 20px;
+
+    &_title {
+      @include h2;
+      font-weight: 600;
+    }
+
+    &_description {
+      @include h6;
+    }
+  }
+
+  //   &_image {
+  //     // height: 50%;
+  //     // margin-top: 5px;
+  //     // position: relative;
+  //     // top: 5px;
+  //   }
+
+  img {
+    // margin-top: 2rem;
+    min-height: 240px;
+    max-height: 300px;
+    border-radius: 0px 0px 30px 30px;
+    object-fit: cover;
+  }
+
+  &_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+  }
+}
+
 .categorie {
   &_slot {
     @include p;
