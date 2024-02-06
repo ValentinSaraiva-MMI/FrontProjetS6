@@ -48,6 +48,15 @@
     }
 }
 
+@mixin h3 {
+    font-family: $font;
+    font-size: $mobile-font_big;
+   
+    @include medium {
+        font-size: $pc-font_big;
+    }
+}
+
 @mixin h6 {
     font-family: $font;
     font-size: $mobile-font_reguler;

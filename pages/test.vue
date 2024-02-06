@@ -18,7 +18,7 @@ definePageMeta({
 </script>
 
 <template>
-  mon profil
+  vous etes connencté
 
   <p @click="logout()">déconnexion</p>
 </template>
