@@ -7,16 +7,16 @@
       <h2 class="connexion_title">Vous connecter</h2>
       <form @submit.prevent="connexion" method="post">
         <input
-          class="input"
+          class="connexion_input1"
           type="text"
           name="name"
-          id="pesudo"
+          id="pseudo"
           required
           placeholder="Pseudo"
           v-model="userCo.pseudo"
         />
         <input
-          class="input"
+          class="connexion_input2"
           type="password"
           name="password"
           id="mdp"
@@ -24,26 +24,58 @@
           placeholder="Mot de Passe"
           v-model="userCo.mdp"
         />
-        <input class="a-login-input" type="submit" value="Se connecter" />
+        <input class="connexion_btn1" type="submit" value="Se connecter" />
       </form>
-      <p>pas de compte? cliquez <span @click="toggleForm">ici</span></p>
+      <p>
+        Vous n’avez pas de compte ?
+        <span @click="toggleForm"> cliquez ici</span>
+      </p>
     </div>
 
-    <div class="creation" v-else>
-      <h2 class="creation">Inscription</h2>
+    <div class="connexion" v-else>
+      <h2 class="connexion_title">Inscription</h2>
       <form @submit.prevent="register" method="post">
         <input v-model="name" type="text" placeholder="Nom" />
         <input v-model="password" type="password" placeholder="Mot de passe" />
         <input class="a-login-input" type="submit" value="Crée un compte" />
-        <p>
-          déjà un compte? cliquez <span @click="toggleForm">ici</span> pour se
-          connecter
+        <p class="">
+          Vous n'avez pas de compte ?
+          <span @click="toggleForm">cliquez ici</span> pour se connecter
         </p>
         <p>{{ message }}</p>
       </form>
     </div>
 
-    <div class="slider"></div>
+    <div class="slider">
+      <div class="list">
+        <div class="item">
+          <img src="public/images/plante1.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante2.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante3.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante4.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante5.jpg" alt="" />
+        </div>
+      </div>
+      <!-- <div class="buttons">
+        <button id="prev"><</button>
+        <button id="next">></button>
+      </div> -->
+      <ul class="dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
   </div>
 
   <!-- <div v-for="item in bddData" :key="item.userID">
@@ -81,13 +113,15 @@ form {
 }
 
 .page {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0px 10px;
-  gap: 20px;
+  @include medium {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0px 10px;
+    gap: 20px;
+  }
 }
 
 .creation {
@@ -97,21 +131,113 @@ form {
 
 .connexion {
   width: 100%;
-  background-color: blue;
+  margin-top: 3.25rem;
+
+  &_input1 {
+    background-color: $white;
+    color: $black;
+    font-weight: 700;
+    height: 3rem;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  &_input2 {
+    background-color: $white;
+    color: $black;
+    font-weight: 700;
+    height: 3rem;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
 
   &_title {
     @include h2;
+    margin-bottom: 3.25rem;
+    margin-top: 3.25rem;
+  }
+
+  &_btn1 {
+    height: 3rem;
+    background-color: $beige;
+    color: $green;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
   }
 }
 
+/*slider image */
 .slider {
-  width: 100%;
-  height: 150px;
-  background-color: purple;
+  width: 1300px;
+  max-width: 100vw;
+  height: 700px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
 }
-
-.input {
-  height: 60px;
+.slider .list {
+  position: absolute;
+  width: max-content;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  transition: 1s;
+}
+.slider .list img {
+  width: 1300px;
+  max-width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+.slider .buttons {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.slider .buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff5;
+  color: #fff;
+  border: none;
+  font-family: monospace;
+  font-weight: bold;
+}
+.slider .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.slider .dots li {
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.slider .dots li.active {
+  width: 30px;
+}
+@media screen and (max-width: 768px) {
+  .slider {
+    height: 400px;
+  }
 }
 </style>
 
@@ -167,5 +293,68 @@ onBeforeMount(async () => {
       error
     );
   }
+});
+
+onMounted(() => {
+  // Code exécuté après le chargement complet du DOM
+  let slider = document.querySelector(".slider .list");
+  let dotsContainer = document.querySelector(".slider .dots");
+
+  // Tableau des chemins d'images
+  // let imagePaths = [
+  //   "public/images/fitness.jpg",
+  //   "https://source.unsplash.com/random/1000x1000/?forest",
+  //   "https://source.unsplash.com/random/1000x1000/?love",
+  //   "https://source.unsplash.com/random/1000x1000/?care",
+  // ];
+
+  // // Générer dynamiquement les éléments d'image
+  // imagePaths.forEach((path, index) => {
+  //   let item = document.createElement("div");
+  //   item.classList.add("item");
+
+  //   let img = document.createElement("img");
+  //   img.src = path;
+  //   img.alt = "Slide " + (index + 1);
+
+  //   item.appendChild(img);
+  //   slider.appendChild(item);
+
+  //   // Créer un indicateur pour chaque image
+  //   let dot = document.createElement("li");
+  //   if (index === 0) {
+  //     dot.classList.add("active");
+  //   }
+  //   dotsContainer.appendChild(dot);
+
+  //   // Ajouter un écouteur d'événement pour chaque indicateur
+  //   dot.addEventListener("click", () => {
+  //     active = index;
+  //     reloadSlider();
+  //   });
+  // });
+
+  let items = document.querySelectorAll(".slider .list .item");
+  let dots = document.querySelectorAll(".slider .dots li");
+
+  let lengthItems = items.length - 1;
+  let active = 0;
+
+  let refreshInterval = setInterval(() => {
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+  }, 3000);
+
+  function reloadSlider() {
+    slider.style.left = -items[active].offsetLeft + "px";
+
+    let last_active_dot = document.querySelector(".slider .dots li.active");
+    last_active_dot.classList.remove("active");
+    dots[active].classList.add("active");
+  }
+
+  window.onresize = function (event) {
+    reloadSlider();
+  };
 });
 </script>
