@@ -177,6 +177,7 @@ form {
   margin: auto;
   position: relative;
   overflow: hidden;
+  border-radius: 25px;
 }
 .slider .list {
   position: absolute;
@@ -193,34 +194,17 @@ form {
   height: 100%;
   object-fit: cover;
 }
-.slider .buttons {
-  position: absolute;
-  top: 45%;
-  left: 5%;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-}
-.slider .buttons button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #fff5;
-  color: #fff;
-  border: none;
-  font-family: monospace;
-  font-weight: bold;
-}
+
 .slider .dots {
   position: absolute;
   bottom: 10px;
   left: 0;
   color: #fff;
   width: 100%;
-  margin: 0;
+  margin-left: 15px;
+  // justify-content: end;
   padding: 0;
   display: flex;
-  justify-content: center;
 }
 .slider .dots li {
   list-style: none;
