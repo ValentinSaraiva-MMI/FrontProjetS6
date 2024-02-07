@@ -35,15 +35,25 @@
     <div class="connexion" v-else>
       <h2 class="connexion_title">Inscription</h2>
       <form @submit.prevent="register" method="post">
-        <input v-model="name" type="text" placeholder="Nom" />
-        <input v-model="password" type="password" placeholder="Mot de passe" />
-        <input class="a-login-input" type="submit" value="Crée un compte" />
-        <p class="">
-          Vous n'avez pas de compte ?
-          <span @click="toggleForm">cliquez ici</span> pour se connecter
-        </p>
-        <p>{{ message }}</p>
+        <input
+          class="connexion_input1"
+          v-model="name"
+          type="text"
+          placeholder="Nom"
+        />
+        <input
+          class="connexion_input2"
+          v-model="password"
+          type="password"
+          placeholder="Mot de passe"
+        />
+        <input class="connexion_btn1" type="submit" value="Crée un compte" />
       </form>
+      <p class="">
+        Vous n'avez pas de compte ?
+        <span @click="toggleForm">cliquez ici</span> pour se connecter
+      </p>
+      <p>{{ message }}</p>
     </div>
 
     <div class="slider">
@@ -119,18 +129,18 @@ form {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    margin: 0px 10px;
+    margin: 0px 30px;
     gap: 20px;
   }
 }
 
 .creation {
-  width: 100%;
+  width: 50vw;
   background-color: red;
 }
 
 .connexion {
-  width: 100%;
+  width: 50vw;
   margin-top: 3.25rem;
 
   &_input1 {
@@ -171,9 +181,8 @@ form {
 
 /*slider image */
 .slider {
-  width: 1300px;
-  max-width: 100vw;
-  height: 700px;
+  width: 439px;
+  height: 659px;
   margin: auto;
   position: relative;
   overflow: hidden;
@@ -190,7 +199,7 @@ form {
 }
 .slider .list img {
   width: 1300px;
-  max-width: 100vw;
+
   height: 100%;
   object-fit: cover;
 }
