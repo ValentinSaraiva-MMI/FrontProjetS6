@@ -1,429 +1,361 @@
 <template>
-  <!-- <MyIcon background size="big" color="red" name="cross" />
+  <backgroundLogo class="bg_logo-pc" />
+  <bigLogo class="logo-pc" />
 
+  <div class="page">
+    <div class="connexion" v-if="isLoginForm">
+      <h2 class="connexion_title">Vous connecter</h2>
+      <form @submit.prevent="connexion" method="post">
+        <input
+          class="connexion_input1"
+          type="text"
+          name="name"
+          id="pseudo"
+          required
+          placeholder="Pseudo"
+          v-model="userCo.pseudo"
+        />
+        <input
+          class="connexion_input2"
+          type="password"
+          name="password"
+          id="mdp"
+          required
+          placeholder="Mot de Passe"
+          v-model="userCo.mdp"
+        />
+        <input class="connexion_btn1" type="submit" value="Se connecter" />
+      </form>
+      <p class="connexion_p">
+        Vous n’avez pas de compte ?
+        <span class="connexion_span" @click="toggleForm"> cliquez ici</span>
+      </p>
+    </div>
 
+    <div class="connexion" v-else>
+      <h2 class="connexion_title">Inscription</h2>
+      <form @submit.prevent="register" method="post">
+        <input
+          class="connexion_input1"
+          v-model="name"
+          type="text"
+          placeholder="Nom"
+        />
+        <input
+          class="connexion_input2"
+          v-model="password"
+          type="password"
+          placeholder="Mot de passe"
+        />
+        <input class="connexion_btn1" type="submit" value="Crée un compte" />
+      </form>
+      <p class="connexion_p">
+        Vous avez déja un compte ?
+        <span class="connexion_span" @click="toggleForm">cliquez ici</span> pour
+        se connecter
+      </p>
+      <p>{{ message }}</p>
+    </div>
 
-  <MyIcon background size="big" color="full" name="bookmark" />
+    <div class="slider">
+      <div class="list">
+        <div class="item">
+          <img src="public/images/plante1.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante2.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante3.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante4.jpg" alt="" />
+        </div>
+        <div class="item">
+          <img src="public/images/plante5.jpg" alt="" />
+        </div>
+      </div>
+      <!-- <div class="buttons">
+        <button id="prev"><</button>
+        <button id="next">></button>
+      </div> -->
+      <ul class="dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
 
-  <Mycategorie class="categorie" name="partage">
-    <span class="categorie_slot">Partage</span>
-  </Mycategorie>
-
-  <Mycategorie class="categorie" name="sport">
-    <span class="categorie_slot">Fitness</span>
-  </Mycategorie> -->
-
-  <MyIcon
-    class="iconCross"
-    background
-    size="big"
-    color="red"
-    name="cross"
-    id="dislike"
-  />
-
-  <section id="swiper">
-    <!-- <Mycards
-      style="--i: 0"
-      :title="'tdest'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />  -->
-
-    <!--
-    <Mycards
-      style="--i: 1"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />
-    <Mycards
-      style="--i: 2"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-    <!-- <Mycards
-      style="--i: 3"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-
-    <!-- <Mycards
-      style="--i: 2"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />
-    <Mycards
-      style="--i: 15"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-  </section>
-
-  <MyIcon
-    class="iconRight"
-    background
-    size="big"
-    color="green"
-    name="check"
-    id="like"
-  />
+  <!-- <div v-for="item in bddData" :key="item.userID">
+    <p>{{ item.pseudo }}</p>
+     <p v-if="item.userID === 1">{{ item.pseudo }}</p> 
+  </div> -->
 </template>
 
 <style lang="scss">
-.card {
-  width: 83vw;
-  height: 30rem;
-  background-color: $beige;
-  border-radius: 30px;
-  color: $black;
-  border: 2px solid rgb(0, 8, 255);
-  max-width: 600px;
-  max-height: 600px;
+// body {
+//   background-color: $green;
+// }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.25rem;
+}
+
+.logo-pc {
   position: absolute;
-  overflow: hidden;
-  top: 10%;
-  left: 25%;
-  transform: translate(-10%, -25%);
+  top: 25px;
+  left: 25px;
+}
 
-  transform: translateZ(calc(-30px * var(--i)))
-    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
-  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.5s;
+.bg_logo-pc {
+  display: none;
 
-  @include small {
-    border: 2px solid blue;
-  }
   @include medium {
-    border: 2px solid green;
-    max-height: 600px;
-    // max-width: 66.4vw;
+    display: block;
+    position: absolute;
+    top: -80px;
+    left: -90px;
   }
-  @include large {
-    border: 2px solid yellow;
-  }
-  @include xlarge {
-    border: 2px solid purple;
-  }
+}
 
-  @include xxlarge {
-    border: 2px solid pink;
-  }
-
-  &_texte {
-    height: 50%;
-    padding: 20px;
-
-    &_title {
-      @include h2;
-      font-weight: 600;
-    }
-
-    &_description {
-      @include h6;
-    }
-  }
-
-  //   &_image {
-  //     // height: 50%;
-  //     // margin-top: 5px;
-  //     // position: relative;
-  //     // top: 5px;
-  //   }
-
-  img {
-    // margin-top: 2rem;
-    min-height: 240px;
-    max-height: 300px;
-    border-radius: 0px 0px 30px 30px;
-    object-fit: cover;
-  }
-
-  &_btn {
-    width: 100%;
+.page {
+  @include medium {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: -2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0px 30px;
+    gap: 20px;
   }
 }
 
-.categorie {
-  &_slot {
-    @include p;
-    margin-left: 10px;
-  }
-}
-
-.iconRight {
-  position: fixed;
-  top: 50%;
-  right: 5%;
-
-  animation-name: iconeAnimation1;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-  /*ne joue pas l'animation au début*/
-  animation-play-state: paused;
-}
-
-#like.trigger,
-#dislike.trigger {
-  animation-name: iconeAnimation2;
-}
-
-.iconCross {
-  z-index: 50;
-  position: fixed;
-  top: 50%;
-  left: 5%;
-  animation-name: iconeAnimation1;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-  /*ne joue pas l'animation au début*/
-  animation-play-state: paused;
-}
-
-@keyframes iconeAnimation1 {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes iconeAnimation2 {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-#swiper {
-  height: 65vh;
-  width: 90vw;
-  display: grid;
-  perspective: 1000px;
-  perspective-origin: center 50%;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  gap: 1rem;
-  transform: translatey(15%);
-  // border: 2px solid red;
-
-  @include small {
-    // border: 2px solid blue;
-  }
-  @include medium {
-    // border: 2px solid green;
-    width: 98vw;
-  }
-  // @include large {
-  //   border: 2px solid yellow;
-  // }
-  // @include xlarge {
-  //   border: 2px solid purple;
-  // }
-
-  @include xxlarge {
-    border: 2px solid pink;
-  }
-}
-
-a:active {
+.creation {
+  width: 50vw;
   background-color: red;
+}
+
+.connexion {
+  width: 50vw;
+  margin-top: 3.25rem;
+
+  &_input1 {
+    background-color: $white;
+    color: $black;
+    font-weight: 700;
+    height: 3rem;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  &_input2 {
+    background-color: $white;
+    color: $black;
+    font-weight: 700;
+    height: 3rem;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  &_title {
+    @include h2;
+    margin-bottom: 3.25rem;
+    margin-top: 3.25rem;
+  }
+
+  &_btn1 {
+    height: 3rem;
+    background-color: $beige;
+    color: $green;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+  }
+
+  &_span {
+    color: $beige;
+    font-weight: 600;
+  }
+  &_p {
+    margin-top: 15px;
+  }
+}
+
+/*slider image */
+.slider {
+  width: 439px;
+  height: 659px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.slider .list {
+  position: absolute;
+  width: max-content;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  transition: 1s;
+}
+.slider .list img {
+  width: 1300px;
+
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  margin-left: 15px;
+  // justify-content: end;
+  padding: 0;
+  display: flex;
+}
+.slider .dots li {
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.slider .dots li.active {
+  width: 30px;
+}
+@media screen and (max-width: 768px) {
+  .slider {
+    height: 400px;
+  }
 }
 </style>
 
 <script setup>
-import { onMounted } from "vue";
+import { client } from "@/utils/axios";
+import { useGlobalStore } from "@/stores/global";
+import { useRouter } from "vue-router";
+import backgroundLogo from "../components/elements/backgroundLogo.vue";
+import bigLogo from "../components/elements/bigLogo.vue";
 
-//CARD.JS
-class Card {
-  constructor({ imageUrl, onDismiss, onLike, onDislike }) {
-    this.imageUrl = imageUrl;
-    this.onDismiss = onDismiss;
-    this.onLike = onLike;
-    this.onDislike = onDislike;
-    this.#init();
+const router = useRouter();
+const store = useGlobalStore();
+const userCo = ref({});
+const name = ref("");
+const password = ref("");
+const message = ref("");
+const isLoginForm = ref(true);
+const bddData = ref([]);
+
+const toggleForm = () => {
+  isLoginForm.value = !isLoginForm.value;
+};
+
+const register = async () => {
+  try {
+    const user = await registerUser(name.value, password.value);
+    console.log("Compte utilisateur créé avec succès:", user);
+    message.value = "votre compte a été créer avec succès";
+  } catch (error) {
+    console.error("Erreur lors de l’inscription:", error);
   }
+};
+const connexion = async () => {
+  try {
+    const response = await client.post(`/login`, userCo.value);
+    const { token } = response.data; // Récupérer le token depuis la réponse client
+    store.setToken(token); // Enregistrer le token dans le store Pinia
+    message.value = "Vous êtes bien connecté";
+    router.push("/home");
+  } catch (error) {
+    message.value = "Erreur lors de la connexion";
+  }
+};
 
-  // private properties
-  #startPoint;
-  #offsetX;
-  #offsetY;
-
-  // private methods
-  #init = () => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    const img = document.createElement("img");
-    img.src = this.imageUrl;
-    card.append(img);
-    this.element = card;
-
-    this.#listenToMouseEvents();
-  };
-
-  #listenToMouseEvents = () => {
-    //mousedown
-    this.element.addEventListener("mousedown", (e) => {
-      const { clientX, clientY } = e;
-      this.#startPoint = { x: clientX, y: clientY };
-      //no transition when mouse mouving
-      this.element.style.transition = "";
-      document.addEventListener("mousemove", this.#handleMouseMove);
-    });
-
-    // mouseup
-    document.addEventListener("mouseup", this.#handleMouseUp);
-
-    //prevent drag
-    this.element.addEventListener("dragstart", (e) => {
-      e.preventDefault();
-    });
-  };
-
-  #handleMouseMove = (e) => {
-    if (!this.#startPoint) return;
-    const { clientX, clientY } = e;
-    this.#offsetX = clientX - this.#startPoint.x;
-    this.#offsetY = clientY - this.#startPoint.y;
-
-    const rotate = this.#offsetX * 0.1;
-    this.element.style.transform = `translate(${this.#offsetX}px, ${
-      this.#offsetY
-    }px) rotate(${rotate}deg)`;
-
-    //dismiss card when moving too far away
-    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
-      const direction = this.#offsetX > 0 ? 1 : -1;
-      this.#dismiss(direction);
-    }
-  };
-
-  #handleMouseUp = (e) => {
-    this.#startPoint = null;
-    document.removeEventListener("mousemove", this.#handleMouseMove);
-    //transition when move back
-    this.element.style.transition = "transform 0.5s";
-    this.element.style.transform = "";
-  };
-
-  #dismiss = (direction) => {
-    this.#startPoint = null;
-    document.removeEventListener("mouseup", this.#handleMouseUp);
-    document.removeEventListener("mousemove", this.#handleMouseMove);
-
-    this.element.style.transition = "transform 0.9s";
-    this.element.style.transform = `translate(${
-      direction * window.innerWidth
-    }px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
-    this.element.classList.add("dismissing");
-
-    setTimeout(() => {
-      this.element.remove();
-    }, 500);
-
-    if (typeof this.onDismiss === "function") {
-      this.onDismiss();
-    }
-    if (typeof this.onLike === "function" && direction === 1) {
-      this.onLike();
-      console.log("like");
-    }
-    if (typeof this.onDislike === "function" && direction === -1) {
-      this.onDislike();
-      console.log("Dislike");
-    }
-  };
-}
-
-//SCRIPT.JS
-
-//dom
-onMounted(() => {
-  if (process.client) {
-    // Vérifiez si le code s'exécute côté client
-
-    const swiper = document.querySelector("#swiper");
-    const like = document.querySelector("#like");
-    const dislike = document.querySelector("#dislike");
-
-    const urls = [
-      "https://source.unsplash.com/random/1000x1000/?sport",
-      "https://source.unsplash.com/random/1000x1000/?muscle",
-      "https://source.unsplash.com/random/1000x1000/?fitness",
-      "https://source.unsplash.com/random/1000x1000/?moutain",
-      "https://source.unsplash.com/random/1000x1000/?health",
-      "https://source.unsplash.com/random/1000x1000/?music",
-      "https://source.unsplash.com/random/1000x1000/?forest",
-      "https://source.unsplash.com/random/1000x1000/?art",
-      "https://source.unsplash.com/random/1000x1000/?love",
-      "https://source.unsplash.com/random/1000x1000/?care",
-    ];
-
-    const titre = ["Titre1", "Titre2"];
-
-    const description = ["Titre1", "Titre2"];
-
-    let cardCount = 0;
-
-    //function
-    function appendNewCard() {
-      const card = new Card({
-        imageUrl: urls[cardCount % 10],
-        onDismiss: appendNewCard,
-        onLike: () => {
-          like.style.animationPlayState = "running";
-          // always trigger animation when toggling class
-          like.classList.toggle("trigger");
-        },
-
-        onDislike: () => {
-          dislike.style.animationPlayState = "running";
-          // always trigger animation when toggling class
-          dislike.classList.toggle("trigger");
-        },
-      });
-
-      // card.element.style.setProperty("--i", cardCount % 5);
-      swiper.append(card.element);
-      cardCount++;
-
-      const cards = swiper.querySelectorAll(".card:not(.dismissing)");
-      cards.forEach((card, index) => {
-        card.style.setProperty("--i", index);
-      });
-    }
-
-    for (let i = 0; i < 10; i++) {
-      appendNewCard();
-    }
+onBeforeMount(async () => {
+  try {
+    const response = await client.get("/user");
+    bddData.value = response.data;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des données du serveur",
+      error
+    );
   }
 });
 
-import MyIcon from "../components/elements/MyIcon.vue";
-import Mycategorie from "../components/elements/Mycategorie.vue";
+onMounted(() => {
+  // Code exécuté après le chargement complet du DOM
+  let slider = document.querySelector(".slider .list");
+  let dotsContainer = document.querySelector(".slider .dots");
+
+  // Tableau des chemins d'images
+  // let imagePaths = [
+  //   "public/images/fitness.jpg",
+  //   "https://source.unsplash.com/random/1000x1000/?forest",
+  //   "https://source.unsplash.com/random/1000x1000/?love",
+  //   "https://source.unsplash.com/random/1000x1000/?care",
+  // ];
+
+  // // Générer dynamiquement les éléments d'image
+  // imagePaths.forEach((path, index) => {
+  //   let item = document.createElement("div");
+  //   item.classList.add("item");
+
+  //   let img = document.createElement("img");
+  //   img.src = path;
+  //   img.alt = "Slide " + (index + 1);
+
+  //   item.appendChild(img);
+  //   slider.appendChild(item);
+
+  //   // Créer un indicateur pour chaque image
+  //   let dot = document.createElement("li");
+  //   if (index === 0) {
+  //     dot.classList.add("active");
+  //   }
+  //   dotsContainer.appendChild(dot);
+
+  //   // Ajouter un écouteur d'événement pour chaque indicateur
+  //   dot.addEventListener("click", () => {
+  //     active = index;
+  //     reloadSlider();
+  //   });
+  // });
+
+  let items = document.querySelectorAll(".slider .list .item");
+  let dots = document.querySelectorAll(".slider .dots li");
+
+  let lengthItems = items.length - 1;
+  let active = 0;
+
+  let refreshInterval = setInterval(() => {
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+  }, 3000);
+
+  function reloadSlider() {
+    slider.style.left = -items[active].offsetLeft + "px";
+
+    let last_active_dot = document.querySelector(".slider .dots li.active");
+    last_active_dot.classList.remove("active");
+    dots[active].classList.add("active");
+  }
+
+  window.onresize = function (event) {
+    reloadSlider();
+  };
+});
 </script>

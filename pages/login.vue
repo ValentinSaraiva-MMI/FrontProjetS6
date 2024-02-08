@@ -26,9 +26,9 @@
         />
         <input class="connexion_btn1" type="submit" value="Se connecter" />
       </form>
-      <p>
+      <p class="connexion_p">
         Vous n’avez pas de compte ?
-        <span @click="toggleForm"> cliquez ici</span>
+        <span class="connexion_span" @click="toggleForm"> cliquez ici</span>
       </p>
     </div>
 
@@ -49,9 +49,10 @@
         />
         <input class="connexion_btn1" type="submit" value="Crée un compte" />
       </form>
-      <p class="">
-        Vous n'avez pas de compte ?
-        <span @click="toggleForm">cliquez ici</span> pour se connecter
+      <p class="connexion_p">
+        Vous avez déja un compte ?
+        <span class="connexion_span" @click="toggleForm">cliquez ici</span> pour
+        se connecter
       </p>
       <p>{{ message }}</p>
     </div>
@@ -176,6 +177,14 @@ form {
     border-radius: 10px;
     font-weight: 700;
     border: none;
+  }
+
+  &_span {
+    color: $beige;
+    font-weight: 600;
+  }
+  &_p {
+    margin-top: 15px;
   }
 }
 

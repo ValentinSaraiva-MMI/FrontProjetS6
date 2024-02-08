@@ -19,6 +19,7 @@ const router = useRouter();
 const showFooter = ref(true);
 
 watchEffect(() => {
-  showFooter.value = !router.currentRoute.value.path.startsWith("/login");
+  const currentPath = router.currentRoute.value.path;
+  showFooter.value = currentPath !== "/";
 });
 </script>
