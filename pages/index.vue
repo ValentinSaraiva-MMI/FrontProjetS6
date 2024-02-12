@@ -300,58 +300,34 @@ onMounted(() => {
   let slider = document.querySelector(".slider .list");
   let dotsContainer = document.querySelector(".slider .dots");
 
-  // Tableau des chemins d'images
-  // let imagePaths = [
-  //   "public/images/fitness.jpg",
-  //   "https://source.unsplash.com/random/1000x1000/?forest",
-  //   "https://source.unsplash.com/random/1000x1000/?love",
-  //   "https://source.unsplash.com/random/1000x1000/?care",
-  // ];
-
-  // // Générer dynamiquement les éléments d'image
-  // imagePaths.forEach((path, index) => {
-  //   let item = document.createElement("div");
-  //   item.classList.add("item");
-
-  //   let img = document.createElement("img");
-  //   img.src = path;
-  //   img.alt = "Slide " + (index + 1);
-
-  //   item.appendChild(img);
-  //   slider.appendChild(item);
-
-  //   // Créer un indicateur pour chaque image
-  //   let dot = document.createElement("li");
-  //   if (index === 0) {
-  //     dot.classList.add("active");
-  //   }
-  //   dotsContainer.appendChild(dot);
-
-  //   // Ajouter un écouteur d'événement pour chaque indicateur
-  //   dot.addEventListener("click", () => {
-  //     active = index;
-  //     reloadSlider();
-  //   });
-  // });
-
   let items = document.querySelectorAll(".slider .list .item");
   let dots = document.querySelectorAll(".slider .dots li");
 
   let lengthItems = items.length - 1;
   let active = 0;
 
-  let refreshInterval = setInterval(() => {
-    active = active + 1 <= lengthItems ? active + 1 : 0;
-    reloadSlider();
-  }, 3000);
+  // function reloadSlider() {
+  //   slider.style.left = -items[active].offsetLeft + "px";
+
+  //   let last_active_dot = document.querySelector(".slider .dots li.active");
+  //   last_active_dot.classList.remove("active");
+  //   dots[active].classList.add("active");
+  // }
 
   function reloadSlider() {
     slider.style.left = -items[active].offsetLeft + "px";
 
     let last_active_dot = document.querySelector(".slider .dots li.active");
-    last_active_dot.classList.remove("active");
+    if (last_active_dot) {
+      last_active_dot.classList.remove("active");
+    }
     dots[active].classList.add("active");
   }
+
+  let refreshInterval = setInterval(() => {
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+  }, 3000);
 
   window.onresize = function (event) {
     reloadSlider();

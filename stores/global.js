@@ -31,7 +31,7 @@ export const useGlobalStore = defineStore("global", {
 
     logout() {
       this.clearToken();
-      console.log("test");
+      console.log("logout");
     },
 
     increment() {
