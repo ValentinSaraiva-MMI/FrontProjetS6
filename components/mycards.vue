@@ -12,10 +12,10 @@
       <img :src="image" alt="" />
     </div>
 
-    <div class="card_btn">
+    <!-- <div class="card_btn">
       <MyIcon background size="big" color="red" name="cross" />
       <MyIcon background size="big" color="green" name="check" />
-    </div>
+    </div> -->
     <MyIcon
       class="btn_favoris"
       background
@@ -29,8 +29,8 @@
 <style lang="scss">
 .btn_favoris {
   position: absolute;
-  bottom: 0;
-  transform: translateY(50%);
+  bottom: 10px;
+  right: 10px;
 
   //   @include medium {
   //     left: 80%;
@@ -59,15 +59,15 @@
   border-radius: 30px;
   color: $black;
   border: 2px solid rgb(0, 8, 255);
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 30rem;
   position: absolute;
-  top: 10%;
-  left: 25%;
-  transform: translate(-10%, -25%);
+  top: 45%;
+  left: 50%;
+  transform: translate(-45%, -50%);
 
-  transform: translateZ(calc(-30px * var(--i)))
-    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
+  // transform: translateZ(calc(-30px * var(--i)))
+  //   translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
   filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
   cursor: pointer;
   user-select: none;

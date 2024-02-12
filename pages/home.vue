@@ -18,6 +18,7 @@
   <Mycards
     v-for="card in cards"
     :key="card.id"
+    style="--i: 0"
     :title="card.card_title"
     :description="card.card_description"
     :image="card.card_image"
@@ -129,27 +130,27 @@ dislike.trigger {
   animation-play-state: paused;
 }
 
-@keyframes iconeAnimation1 {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
+// @keyframes iconeAnimation1 {
+//   0%,
+//   100% {
+//     opacity: 0.2;
+//   }
 
-  50% {
-    opacity: 1;
-  }
-}
+//   50% {
+//     opacity: 1;
+//   }
+// }
 
-@keyframes iconeAnimation2 {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
+// @keyframes iconeAnimation2 {
+//   0%,
+//   100% {
+//     opacity: 0.2;
+//   }
 
-  50% {
-    opacity: 1;
-  }
-}
+//   50% {
+//     opacity: 1;
+//   }
+// }
 
 swiper {
   height: 65vh;
@@ -193,7 +194,8 @@ import { onMounted } from "vue";
 import axios from "axios";
 import { useGlobalStore } from "@/stores/global";
 
-import { client } from "@/utils/axios";
+import Mycategorie from "../components/elements/Mycategorie.vue";
+import MyIcon from "../components/elements/MyIcon.vue";
 
 import { useRouter } from "vue-router";
 
@@ -215,6 +217,7 @@ const cards = ref([]);
 onMounted(() => {
   axios.get("http://localhost:3001/cards").then((res) => {
     cards.value = res.data;
+    console.log("GetData : ", cards.value.length);
   });
 });
 
