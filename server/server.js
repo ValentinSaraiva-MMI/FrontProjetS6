@@ -172,6 +172,31 @@ app.post("/registercat", (req, res) => {
   );
 });
 
+app.post("/registercard", (req, res) => {
+  const { card_title, card_image, card_description, category_id } = req.body;
+  if (!card_title || !category_id || !card_image || !card_description) {
+    res.status(400).json({ error: "nom catégorie requis" });
+    return;
+  }
+  console.log("Trying to create card...");
+  db.run(
+    "INSERT INTO MyCard (card_title,card_image,card_description,category_id) VALUES (?,?,?,?)",
+    [card_title, card_image, card_description, category_id],
+    function (err) {
+      const card_id = this.lastID; // Récupérer l'ID de la nouvelle catégorie insérée
+
+      if (err) {
+        console.error("Error creating categorie:", err.message);
+        res.status(500).json({ error: "Internal server error" });
+        return;
+      }
+
+      console.log("Card creation successful!");
+      res.json({ card_id, card_title }); // Renvoyer l'ID de la catégorie et le nom
+    }
+  );
+});
+
 // Port d'écoute du serveur Express
 const port = process.env.PORT || 3001;
 
