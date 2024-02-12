@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { client } from "@/utils/axios";
 import MyIcon from "../components/elements/MyIcon.vue";
 import { onMounted } from "vue";
+import axios from "axios";
 
 const logoutMessage = ref("");
 
@@ -141,6 +142,12 @@ onMounted(() => {
       "https://source.unsplash.com/random/1000x1000/?care",
     ];
 
+    const data = ref([]);
+    axios.get("http://localhost:3001/cards").then((res) => {
+      data.value = res.data;
+      console.log("GetData : ", data.value);
+    });
+
     const titre = ["Titre1", "Titre2"];
 
     const description = ["Titre1", "Titre2"];
@@ -267,6 +274,56 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+.card {
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  color: #333;
+  position: relative;
+  border: 2px solid red;
+  max-width: 600px;
+  max-height: 600px;
+  transform: translateZ(calc(-30px * var(--i)))
+    translateY(calc(-489px * var(--i))) rotate(calc(-4deg * var(--i)));
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.5s;
+
+  position: absolute;
+  border-radius: 20px;
+  overflow: hidden;
+
+  transform: translateZ(calc(-30px * var(--i)))
+    translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.5s;
+
+  .card_texte {
+    height: 50%;
+    padding: 20px;
+
+    .card_texte_title {
+      font-weight: 600;
+    }
+  }
+
+  img {
+    min-height: 240px;
+    max-height: 300px;
+    border-radius: 0px 0px 30px 30px;
+    // object-fit: cover;
+  }
+
+  &_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+  }
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -1,14 +1,16 @@
--- CREATE TABLE Card (
---     card_id INTEGER PRIMARY KEY,
---     card_title TEXT,
---     card_description TEXT,
---     categorieID INTEGER,
---     FOREIGN KEY (categorieID) REFERENCES Card_Categorie(card_categorie_id) -- Contrainte de clé étrangère vers la table Card_Categorie
--- );
--- CREATE TABLE Card_Categorie (
---     card_categorie_id INTEGER PRIMARY KEY,
---     card_nom TEXT
--- );
+CREATE TABLE MyCard (
+    card_id INTEGER PRIMARY KEY,
+    card_title TEXT,
+    card_image TEXT,
+    -- Stocke l'URL de l'image
+    card_description TEXT,
+    category_id INTEGER,
+    FOREIGN KEY (category_id) REFERENCES Card_Categorie(card_categorie_id)
+);
+CREATE TABLE Card_Categorie (
+    card_categorie_id INTEGER PRIMARY KEY,
+    card_nom TEXT
+);
 --Table utilisateurs
 CREATE TABLE User (
     userID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

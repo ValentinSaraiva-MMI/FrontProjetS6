@@ -89,10 +89,9 @@
     </div>
   </div>
 
-  <!-- <div v-for="item in bddData" :key="item.userID">
-    <p>{{ item.pseudo }}</p>
-     <p v-if="item.userID === 1">{{ item.pseudo }}</p> 
-  </div> -->
+  <div v-for="item in bddData" :key="item.card_id">
+    <p>{{ item.card_title }}</p>
+  </div>
 </template>
 
 <style lang="scss">

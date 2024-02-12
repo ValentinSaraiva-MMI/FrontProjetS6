@@ -14,7 +14,7 @@
   </nav>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .footer_nav {
   width: 80%;
   display: flex;

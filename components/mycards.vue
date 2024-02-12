@@ -8,12 +8,8 @@
     <Mycategorie class="categorie2" name="partage">
       <span class="categorie2_slot">Partage</span>
     </Mycategorie>
-
     <div class="card_image">
-      <img
-        src="https://source.unsplash.com/random/1000x1000/?sport"
-        alt="image représentant le fitness"
-      />
+      <img :src="image" alt="" />
     </div>
 
     <div class="card_btn">
@@ -32,9 +28,9 @@
 
 <style lang="scss">
 .btn_favoris {
-  position: relative;
-  top: -50px;
-  left: 85%;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
 
   //   @include medium {
   //     left: 80%;
@@ -59,17 +55,13 @@
 }
 
 .card {
-  width: 83vw;
-  height: 30rem;
   background-color: $beige;
   border-radius: 30px;
   color: $black;
   border: 2px solid rgb(0, 8, 255);
-  max-width: 600px;
-  max-height: 600px;
+  width: 400px;
+  height: 400px;
   position: absolute;
-  overflow: hidden;
-
   top: 10%;
   left: 25%;
   transform: translate(-10%, -25%);
@@ -99,6 +91,16 @@
   @include xxlarge {
     border: 2px solid pink;
   }
+  &_image {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+  }
 
   &_texte {
     height: 50%;
@@ -114,26 +116,13 @@
     }
   }
 
-  //   &_image {
-  //     // height: 50%;
-  //     // margin-top: 5px;
-  //     // position: relative;
-  //     // top: 5px;
-  //   }
-
-  img {
-    // margin-top: 2rem;
-    min-height: 240px;
-    max-height: 300px;
-    border-radius: 0px 0px 30px 30px;
-    object-fit: cover;
-  }
-
   &_btn {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: -2rem;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
   }
 }
 </style>

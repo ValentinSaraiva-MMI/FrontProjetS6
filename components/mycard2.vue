@@ -102,7 +102,7 @@ const toggleColor = () => {
     min-height: 240px;
     max-height: 300px;
     border-radius: 0px 0px 30px 30px;
-    object-fit: cover;
+    // object-fit: cover;
   }
 
   &_btn {
