@@ -12,28 +12,29 @@
   <Mycategorie class="categorie" name="sport">
     <span class="categorie_slot">Fitness</span>
   </Mycategorie> -->
-
   <p @click="logout()">déconnexion</p>
+  <div v-if="cards.length > 0">
+    <Mycards
+      v-for="(card, index) in cards"
+      :key="card.card_id"
+      v-show="index === currentIndex"
+      style="--i: 0"
+      :title="card.card_title"
+      :description="card.card_description"
+      :image="card.card_image"
+    />
 
-  <Mycards
-    v-for="card in cards"
-    :key="card.id"
-    style="--i: 0"
-    :title="card.card_title"
-    :description="card.card_description"
-    :image="card.card_image"
-  />
+    <MyIcon
+      class="iconCross"
+      background
+      size="big"
+      color="red"
+      name="cross"
+      id="dislike"
+      @click="dislike()"
+    />
 
-  <MyIcon
-    class="iconCross"
-    background
-    size="big"
-    color="red"
-    name="cross"
-    id="dislike"
-  />
-
-  <!-- <section id="swiper">
+    <!-- <section id="swiper">
     <!-- <Mycards
       style="--i: 0"
       :title="'tdest'"
@@ -42,7 +43,7 @@
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     />  -->
 
-  <!--
+    <!--
     <Mycards
       style="--i: 1"
       :title="'test'"
@@ -57,7 +58,7 @@
         lemon drops gummi bears powder pudding sweet. Topping cake chocolate
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     /> -->
-  <!-- <Mycards
+    <!-- <Mycards
       style="--i: 3"
       :title="'test'"
       :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
@@ -65,7 +66,7 @@
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     /> -->
 
-  <!-- <Mycards
+    <!-- <Mycards
       style="--i: 2"
       :title="'test'"
       :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
@@ -79,16 +80,20 @@
         lemon drops gummi bears powder pudding sweet. Topping cake chocolate
         marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
     /> -->
-  <!-- </section>  -->
+    <!-- </section>  -->
 
-  <MyIcon
-    class="iconRight"
-    background
-    size="big"
-    color="green"
-    name="check"
-    id="like"
-  />
+    <MyIcon
+      class="iconRight"
+      background
+      size="big"
+      color="green"
+      name="check"
+      id="like"
+      @click="like()"
+    />
+  </div>
+
+  <p v-else>Aucune carte disponible</p>
 </template>
 
 <style lang="scss">
@@ -190,7 +195,7 @@ a:active {
 </style>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useGlobalStore } from "@/stores/global";
 
@@ -212,7 +217,27 @@ definePageMeta({
   middleware: [function (to, from) {}, "auth"],
 });
 
+function dislike() {
+  if (cards.value.length > 1) {
+    cards.value.splice(currentIndex.value, 1);
+    // Ajuste l'index après suppression pour rester sur la même "vue"
+    currentIndex.value = currentIndex.value % cards.value.length;
+  } else if (cards.value.length === 1) {
+    // Si c'est la dernière carte, réinitialiser tout
+    cards.value = [];
+    currentIndex.value = 0;
+  }
+}
+
+function like() {
+  // Incrémente l'index pour passer à la carte suivante
+  if (cards.value.length > 0) {
+    currentIndex.value = (currentIndex.value + 1) % cards.value.length;
+  }
+}
+
 const cards = ref([]);
+const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
 
 onMounted(() => {
   axios.get("http://localhost:3001/cards").then((res) => {

@@ -16,6 +16,7 @@
       <MyIcon background size="big" color="red" name="cross" />
       <MyIcon background size="big" color="green" name="check" />
     </div> -->
+
     <MyIcon
       class="btn_favoris"
       background
