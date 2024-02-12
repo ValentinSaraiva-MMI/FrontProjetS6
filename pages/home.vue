@@ -22,14 +22,15 @@
     :description="card.card_description"
     :image="card.card_image"
   />
-  <!-- <MyIcon
+
+  <MyIcon
     class="iconCross"
     background
     size="big"
     color="red"
     name="cross"
     id="dislike"
-  /> -->
+  />
 
   <!-- <section id="swiper">
     <!-- <Mycards
@@ -79,14 +80,14 @@
     /> -->
   <!-- </section>  -->
 
-  <!-- <MyIcon
+  <MyIcon
     class="iconRight"
     background
     size="big"
     color="green"
     name="check"
     id="like"
-  /> -->
+  />
 </template>
 
 <style lang="scss">
@@ -192,11 +193,22 @@ import { onMounted } from "vue";
 import axios from "axios";
 import { useGlobalStore } from "@/stores/global";
 
+import { client } from "@/utils/axios";
+
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const store = useGlobalStore();
+const userCo = ref({});
+const name = ref("");
+const password = ref("");
+const message = ref("");
+const isLoginForm = ref(true);
+const bddData = ref([]);
+
 definePageMeta({
   middleware: [function (to, from) {}, "auth"],
 });
-
-const store = useGlobalStore();
 
 const cards = ref([]);
 
