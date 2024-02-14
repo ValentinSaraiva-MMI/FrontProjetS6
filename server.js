@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to your SQLite database
-const db = new sqlite3.Database("../database/projets6-bdd.bd", (err) => {
+const db = new sqlite3.Database("./database/projets6-bdd.bd", (err) => {
   if (err) {
     console.error("Error connecting to the database:", err.message);
   } else {
