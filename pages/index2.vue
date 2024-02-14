@@ -279,7 +279,7 @@ onMounted(() => {
   border-radius: 30px;
   color: #333;
   position: relative;
-  border: 2px solid red;
+
   max-width: 600px;
   max-height: 600px;
   transform: translateZ(calc(-30px * var(--i)))
