@@ -1,29 +1,12 @@
 {
-  "name": "nuxt-app",
+  "name": "back",
   "private": true,
-  "type": "require",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "builddb": "cd database && node db.js",
-    "server": "cd server && node server.js"
+    "start": "node server.js"
   },
   "devDependencies": {
-    "nuxt": "^3.9.3",
-    "vue": "^3.4.14",
-    "vue-router": "^4.2.5"
-  },
-  "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
-    "axios": "^1.6.7",
-    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "pinia": "^2.1.7",
-    "sass": "^1.70.0",
     "sqlite3": "^5.1.7"
   }
 }
