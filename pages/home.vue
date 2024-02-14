@@ -230,8 +230,6 @@ function like() {
       }
     }, 300);
   }
-
-  axios.post("https://garden-projects6.onrender.com/user");
 }
 
 const cards = ref([]);
