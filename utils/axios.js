@@ -4,7 +4,7 @@ export const client = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://garden-projects6.onrender.com";
 
 export const registerUser = async (pseudo, mdp) => {
   try {
