@@ -15,7 +15,4 @@ CREATE TABLE User (
     userID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     pseudo TEXT UNIQUE,
     mdp TEXT,
-    cardliked INTEGER [],
-    carddisliked INTEGER [],
-    cardfavorite INTEGER []
 );
