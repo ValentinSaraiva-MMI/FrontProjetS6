@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "builddb": "cd database && node db.js",
+    "server": "cd server && node server.js"
   },
   "devDependencies": {
     "nuxt": "^3.9.3",
