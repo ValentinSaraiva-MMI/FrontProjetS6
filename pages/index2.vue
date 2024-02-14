@@ -143,7 +143,7 @@ onMounted(() => {
     ];
 
     const data = ref([]);
-    axios.get("http://localhost:3001/cards").then((res) => {
+    axios.get("https://garden-projects6.onrender.com/cards").then((res) => {
       data.value = res.data;
       console.log("GetData : ", data.value);
     });

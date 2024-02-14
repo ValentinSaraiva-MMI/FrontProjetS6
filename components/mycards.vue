@@ -159,7 +159,7 @@ let isLiked = false;
 let isDisliked = true;
 
 onMounted(() => {
-  axios.get("http://localhost:3001/cards").then((res) => {
+  axios.get("https://garden-projects6.onrender.com/cards").then((res) => {
     cards.value = res.data;
   });
 });

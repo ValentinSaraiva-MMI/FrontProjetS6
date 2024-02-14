@@ -231,7 +231,7 @@ function like() {
     }, 300);
   }
 
-  axios.post("http://localhost:3001/user");
+  axios.post("https://garden-projects6.onrender.com/user");
 }
 
 const cards = ref([]);
@@ -240,12 +240,12 @@ const users = ref([]);
 const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
 
 onMounted(() => {
-  axios.get("http://localhost:3001/cards").then((res) => {
+  axios.get("https://garden-projects6.onrender.com/cards").then((res) => {
     cards.value = res.data;
     console.log("GetData : ", cards.value.length);
   });
 
-  axios.get("http://localhost:3001/user").then((res) => {
+  axios.get("https://garden-projects6.onrender.com/user").then((res) => {
     users.value = res.data;
     console.log("GetuserData : ", users.value[0]);
   });

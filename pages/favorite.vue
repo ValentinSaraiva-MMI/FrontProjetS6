@@ -22,12 +22,12 @@ const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
 const cards = ref([]);
 
 onMounted(() => {
-  axios.get("http://localhost:3001/cards").then((res) => {
+  axios.get("https://garden-projects6.onrender.com/cards").then((res) => {
     cards.value = res.data;
     console.log("GetData : ", cards.value.length);
   });
 
-  axios.get("http://localhost:3001/user").then((res) => {
+  axios.get("https://garden-projects6.onrender.com/user").then((res) => {
     users.value = res.data;
     console.log("GetuserData : ", users.value[0]);
   });
