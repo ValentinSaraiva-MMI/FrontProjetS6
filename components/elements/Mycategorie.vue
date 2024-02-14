@@ -31,6 +31,8 @@ import iconpartage from "../icons/partage.vue";
 import iconplant from "../icons/plant.vue";
 import iconsport from "../icons/sport.vue";
 import iconmymusic from "../icons/mymusic.vue";
+import iconphilosophie from "../icons/light.vue";
+
 // import iconcross from "../icons/cross.vue";
 
 const props = defineProps({
@@ -39,16 +41,18 @@ const props = defineProps({
 
 const getIcon = computed(() => {
   switch (props.name) {
-    case "partage":
+    case "Partage":
       return iconpartage;
-    case "plant":
+    case "Ecologie":
       return iconplant;
-    case "sport":
+    case "Fitness":
       return iconsport;
-    case "music":
+    case "Music":
       return iconmymusic;
+    case "Philosophie":
+      return iconphilosophie;
     default:
-      return iconmymusic;
+      return iconplant;
   }
 });
 

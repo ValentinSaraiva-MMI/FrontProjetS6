@@ -198,15 +198,15 @@ app.post("/registercat", (req, res) => {
 });
 
 app.post("/registercard", (req, res) => {
-  const { card_title, card_image, card_description, category_id } = req.body;
-  if (!card_title || !category_id || !card_image || !card_description) {
+  const { card_title, card_image, card_description, card_category } = req.body;
+  if (!card_title || !card_category || !card_image || !card_description) {
     res.status(400).json({ error: "nom catégorie requis" });
     return;
   }
   console.log("Trying to create card...");
   db.run(
-    "INSERT INTO MyCard (card_title,card_image,card_description,category_id) VALUES (?,?,?,?)",
-    [card_title, card_image, card_description, category_id],
+    "INSERT INTO MyCard (card_title,card_image,card_description,card_category) VALUES (?,?,?,?)",
+    [card_title, card_image, card_description, card_category],
     function (err) {
       const card_id = this.lastID; // Récupérer l'ID de la nouvelle catégorie insérée
 

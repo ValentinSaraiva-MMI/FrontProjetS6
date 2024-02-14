@@ -18,7 +18,6 @@
       v-for="(card, index) in cards"
       :key="card.card_id"
       v-show="index === currentIndex"
-      style="--i: 0"
       :title="card.card_title"
       :description="card.card_description"
       :image="card.card_image"
@@ -170,15 +169,32 @@ definePageMeta({
   middleware: [function (to, from) {}, "auth"],
 });
 
+// function dislike() {
+//   if (cards.value.length > 1) {
+//     cards.value.splice(currentIndex.value, 1);
+//     // Ajuste l'index après suppression pour rester sur la même "vue"
+//     currentIndex.value = currentIndex.value % cards.value.length;
+//   } else if (cards.value.length === 1) {
+//     // Si c'est la dernière carte, réinitialiser tout
+//     cards.value = [];
+//     currentIndex.value = 0;
+//   }
+// }
+
 function dislike() {
-  if (cards.value.length > 1) {
-    cards.value.splice(currentIndex.value, 1);
-    // Ajuste l'index après suppression pour rester sur la même "vue"
-    currentIndex.value = currentIndex.value % cards.value.length;
-  } else if (cards.value.length === 1) {
-    // Si c'est la dernière carte, réinitialiser tout
-    cards.value = [];
-    currentIndex.value = 0;
+  if (cards.value.length > 0) {
+    isDisliked = true;
+    console.log(isDisliked.value);
+    setTimeout(() => {
+      if (currentIndex.value < cards.value.length - 1) {
+        cards.value.splice(currentIndex.value, 1);
+      } else {
+        cards.value.pop();
+        currentIndex.value = 0;
+      }
+      isDisliked = false;
+      console.log(isDisliked.value);
+    }, 300);
   }
 }
 
@@ -200,14 +216,36 @@ function dislike() {
 //   }
 // }
 
+// function like() {
+//   // Incrémente l'index pour passer à la carte suivante
+//   if (cards.value.length > 0) {
+//     currentIndex.value = (currentIndex.value + 1) % cards.value.length;
+//   }
+// }
+
 function like() {
-  // Incrémente l'index pour passer à la carte suivante
   if (cards.value.length > 0) {
-    currentIndex.value = (currentIndex.value + 1) % cards.value.length;
+    isLiked.value = true;
+    console.log(isLiked.value);
+    setTimeout(() => {
+      if (currentIndex.value < cards.value.length - 1) {
+        cards.value.splice(currentIndex.value, 1);
+      } else {
+        cards.value.pop();
+        currentIndex.value = 0;
+      }
+
+      isLiked.value = false;
+      console.log(isLiked.value);
+    }, 300);
   }
 }
 
 const cards = ref([]);
+
+const isLiked = ref(false);
+const isDisliked = ref(false);
+
 const users = ref([]);
 const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
 
@@ -232,7 +270,6 @@ onMounted(() => {
 
 const logoutMessage = ref("");
 const logout = () => {
-  console.log("test");
   store.logout();
   alert("Déconnecté avec succès");
   router.push("/");

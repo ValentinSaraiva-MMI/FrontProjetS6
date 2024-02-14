@@ -1,13 +1,16 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ liked: isLiked, disliked: isDisliked }">
     <div class="card_texte">
       <h2 class="card_texte_title">{{ title }}</h2>
       <p class="card_texte_description">{{ description }}</p>
     </div>
 
-    <Mycategorie class="categorie2" name="partage">
+    <Mycategorie class="categorie2" :name="categorie">
       <span class="categorie2_slot">{{ categorie }}</span>
     </Mycategorie>
+
+    <!-- <Mycategorie class="categorie2" :name="categorie" /> -->
+
     <div class="card_image">
       <img :src="image" alt="" />
     </div>
@@ -55,6 +58,13 @@
   }
 }
 
+.liked {
+  opacity: 50%;
+}
+.dislike {
+  opacity: 100%;
+}
+
 .card {
   background-color: $beige;
   border-radius: 30px;
@@ -65,14 +75,15 @@
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-45%, -50%);
+  transform: translate(-50%, -50%);
 
   // transform: translateZ(calc(-30px * var(--i)))
   //   translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
   filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
 
   user-select: none;
-  transition: transform 0.5s;
+
+  transition: transform 0.5s ease-in-out;
 
   @include small {
     border: 2px solid blue;
@@ -132,11 +143,25 @@
 import Mycategorie from "../components/elements/Mycategorie.vue";
 import MyIcon from "../components/elements/MyIcon.vue";
 
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
 defineProps({
   title: String,
   description: String,
   image: String,
   categorie: String,
+});
+
+const cards = ref([]);
+
+let isLiked = false;
+let isDisliked = true;
+
+onMounted(() => {
+  axios.get("http://localhost:3001/cards").then((res) => {
+    cards.value = res.data;
+  });
 });
 
 const iconColor = ref("empty");
