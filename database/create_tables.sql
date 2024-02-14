@@ -14,14 +14,8 @@ CREATE TABLE Card_Categorie (
 CREATE TABLE User (
     userID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     pseudo TEXT UNIQUE,
-    mdp TEXT -- profil_picture_url TEXT,
-    -- -- Colonne pour l'URL de la photo de profil
-    -- banniere_picture_url TEXT -- Colonne pour l'URL de la bannière
-);
-CREATE TABLE UserDislikes (
-    dislike_id INTEGER PRIMARY KEY,
-    userID INTEGER,
-    card_id INTEGER,
-    FOREIGN KEY (userID) REFERENCES User(userID),
-    FOREIGN KEY (card_id) REFERENCES MyCard(card_id)
+    mdp TEXT,
+    cardliked INTEGER [],
+    carddisliked INTEGER [],
+    cardfavorite INTEGER []
 );

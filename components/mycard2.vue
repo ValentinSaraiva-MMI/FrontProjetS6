@@ -53,6 +53,7 @@ const toggleColor = () => {
 }
 
 .categorie2 {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -60,6 +61,14 @@ const toggleColor = () => {
 
   &_slot {
     margin-left: 10px;
+  }
+
+  @include small {
+    bottom: 15px;
+  }
+
+  @include medium {
+    bottom: 15px;
   }
 }
 

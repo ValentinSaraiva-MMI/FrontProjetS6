@@ -183,8 +183,6 @@ definePageMeta({
 
 function dislike() {
   if (cards.value.length > 0) {
-    isDisliked = true;
-    console.log(isDisliked.value);
     setTimeout(() => {
       if (currentIndex.value < cards.value.length - 1) {
         cards.value.splice(currentIndex.value, 1);
@@ -192,8 +190,6 @@ function dislike() {
         cards.value.pop();
         currentIndex.value = 0;
       }
-      isDisliked = false;
-      console.log(isDisliked.value);
     }, 300);
   }
 }
@@ -225,8 +221,6 @@ function dislike() {
 
 function like() {
   if (cards.value.length > 0) {
-    isLiked.value = true;
-    console.log(isLiked.value);
     setTimeout(() => {
       if (currentIndex.value < cards.value.length - 1) {
         cards.value.splice(currentIndex.value, 1);
@@ -234,17 +228,13 @@ function like() {
         cards.value.pop();
         currentIndex.value = 0;
       }
-
-      isLiked.value = false;
-      console.log(isLiked.value);
     }, 300);
   }
+
+  axios.post("http://localhost:3001/user");
 }
 
 const cards = ref([]);
-
-const isLiked = ref(false);
-const isDisliked = ref(false);
 
 const users = ref([]);
 const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
