@@ -60,6 +60,30 @@ app.get("/cards", (req, res) => {
   });
 });
 
+// Route pour afficher que les cartes liké
+app.get("/cardslike", (req, res) => {
+  // Supposons que l'userId soit passé en tant que paramètre de requête
+  const userId = req.query.userId;
+
+  if (!userId) {
+    res.status(400).json({ error: "UserID est requis" });
+    return;
+  }
+
+  db.all(
+    "SELECT * FROM MyCard WHERE card_id NOT IN (SELECT card_id FROM UserDislikes WHERE user_id = ?)",
+    [userId],
+    (err, cards) => {
+      if (err) {
+        console.error("Error fetching cards:", err.message);
+        res.status(500).json({ error: "Internal server error" });
+        return;
+      }
+      res.json(cards);
+    }
+  );
+});
+
 // Route pour se connecter
 app.post("/login", (req, res) => {
   const { pseudo, mdp } = req.body;
@@ -88,7 +112,8 @@ app.post("/login", (req, res) => {
         return;
       }
       // Envoyer une réponse JSON pour signaler la connexion réussie
-      res.json({ token: user.userID });
+      // res.json({ token: user.userID });
+      res.json({ token: user.userID, userID: user.userID });
 
       console.log(`${pseudo} connecté avec succès!`);
     }
@@ -193,6 +218,31 @@ app.post("/registercard", (req, res) => {
 
       console.log("Card creation successful!");
       res.json({ card_id, card_title }); // Renvoyer l'ID de la catégorie et le nom
+    }
+  );
+});
+
+app.post("/dislikecard", (req, res) => {
+  const { userId, cardId } = req.body;
+  // Ajouter une vérification pour s'assurer que userId et cardId sont fournis
+
+  if (!userId || !cardId) {
+    res.status(400).json({ error: "CardID et UserID  requis" });
+    return;
+  }
+
+  db.run(
+    "INSERT INTO UserDislikes (user_id, card_id) VALUES (?, ?)",
+    [userId, cardId],
+    function (err) {
+      if (err) {
+        console.error("Error adding dislike:", err.message);
+        res.status(500).json({ error: "Internal server error" });
+        return;
+      }
+
+      console.log("Dislike added successfully");
+      res.json({ message: "Dislike added successfully" });
     }
   );
 });

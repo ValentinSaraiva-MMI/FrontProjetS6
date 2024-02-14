@@ -6,7 +6,7 @@
     </div>
 
     <Mycategorie class="categorie2" name="partage">
-      <span class="categorie2_slot">Partage</span>
+      <span class="categorie2_slot">{{ categorie }}</span>
     </Mycategorie>
     <div class="card_image">
       <img :src="image" alt="" />
@@ -59,7 +59,7 @@
   background-color: $beige;
   border-radius: 30px;
   color: $black;
-  border: 2px solid rgb(0, 8, 255);
+
   width: 25rem;
   height: 30rem;
   position: absolute;
@@ -70,7 +70,7 @@
   // transform: translateZ(calc(-30px * var(--i)))
   //   translateY(calc(-20px * var(--i))) rotate(calc(-4deg * var(--i)));
   filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
+
   user-select: none;
   transition: transform 0.5s;
 
@@ -96,7 +96,7 @@
     width: 100%;
     img {
       width: 100%;
-      height: 200px;
+      height: 14.98rem;
       object-fit: cover;
       border-bottom-right-radius: 30px;
       border-bottom-left-radius: 30px;
@@ -136,13 +136,12 @@ defineProps({
   title: String,
   description: String,
   image: String,
+  categorie: String,
 });
 
-const iconColor = ref("full");
+const iconColor = ref("empty");
 
 const toggleColor = () => {
-  iconColor.value = iconColor.value === "full" ? "empty" : "full"; // Change the color to 'red' when it's 'full', and vice versa
+  iconColor.value = iconColor.value === "full" ? "empty" : "full";
 };
-
-console.log("tests");
 </script>

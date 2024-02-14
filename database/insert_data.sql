@@ -13,23 +13,23 @@ INSERT INTO MyCard (
         card_title,
         card_image,
         card_description,
-        category_id
+        card_category
     )
 VALUES (
         'CarteFitness',
         'https://source.unsplash.com/random/1000x1000/?fitness',
-        'Description',
-        1
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'Fitness'
     ),
     (
-        'CartePartage',
-        'https://source.unsplash.com/random/1000x1000/?happy',
-        'Description',
-        2
+        'Carte jardinage',
+        'https://source.unsplash.com/random/1000x1000/?garden',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'Main verte'
     ),
     (
-        'CarteMotivation',
+        'Carte Motivation',
         'https://source.unsplash.com/random/1000x1000/?sport',
-        'Description',
-        3
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'Ecologie'
     );

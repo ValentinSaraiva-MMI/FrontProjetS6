@@ -4,8 +4,7 @@ CREATE TABLE MyCard (
     card_image TEXT,
     -- Stocke l'URL de l'image
     card_description TEXT,
-    category_id INTEGER,
-    FOREIGN KEY (category_id) REFERENCES Card_Categorie(card_categorie_id)
+    card_category TEXT
 );
 CREATE TABLE Card_Categorie (
     card_categorie_id INTEGER PRIMARY KEY,

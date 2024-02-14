@@ -22,6 +22,7 @@
       :title="card.card_title"
       :description="card.card_description"
       :image="card.card_image"
+      :categorie="card.card_category"
     />
 
     <MyIcon
@@ -33,54 +34,6 @@
       id="dislike"
       @click="dislike()"
     />
-
-    <!-- <section id="swiper">
-    <!-- <Mycards
-      style="--i: 0"
-      :title="'tdest'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />  -->
-
-    <!--
-    <Mycards
-      style="--i: 1"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />
-    <Mycards
-      style="--i: 2"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-    <!-- <Mycards
-      style="--i: 3"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-
-    <!-- <Mycards
-      style="--i: 2"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    />
-    <Mycards
-      style="--i: 15"
-      :title="'test'"
-      :description="` Fruitcake chupa chups tart lemon drops bear claw topping. Pudding pastry
-        lemon drops gummi bears powder pudding sweet. Topping cake chocolate
-        marshmallow sugar plum candy. Cheesecake gummi beartart bear claw `"
-    /> -->
-    <!-- </section>  -->
 
     <MyIcon
       class="iconRight"
@@ -229,6 +182,24 @@ function dislike() {
   }
 }
 
+// function dislike() {
+//   if (cards.value.length > 0) {
+//     let dislikedCardId = cards.value[currentIndex.value].card_id;
+//     axios.post(`http://localhost:3001/dislikecard`, { userId: /* Votre userId */, cardId: dislikedCardId })
+//       .then(response => {
+//         console.log("Dislike enregistré avec succès");
+//         // Retirer la carte du tableau localement
+//         cards.value.splice(currentIndex.value, 1);
+//         if (currentIndex.value >= cards.value.length) {
+//           currentIndex.value = 0; // Réinitialiser l'index si nécessaire
+//         }
+//       })
+//       .catch(error => {
+//         console.error("Erreur lors de l'enregistrement du dislike", error);
+//       });
+//   }
+// }
+
 function like() {
   // Incrémente l'index pour passer à la carte suivante
   if (cards.value.length > 0) {
@@ -237,6 +208,7 @@ function like() {
 }
 
 const cards = ref([]);
+const users = ref([]);
 const currentIndex = ref(0); // Ajout d'un index pour suivre la carte actuelle
 
 onMounted(() => {
@@ -244,7 +216,19 @@ onMounted(() => {
     cards.value = res.data;
     console.log("GetData : ", cards.value.length);
   });
+
+  axios.get("http://localhost:3001/user").then((res) => {
+    users.value = res.data;
+    console.log("GetuserData : ", users.value[0]);
+  });
 });
+
+// onMounted(() => {
+//   const userId = /* Votre logique pour récupérer l'userId */;
+//   axios.get(`http://localhost:3001/cardslike?userId=${userId}`).then((res) => {
+//     cards.value = res.data;
+//   });
+// });
 
 const logoutMessage = ref("");
 const logout = () => {
