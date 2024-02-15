@@ -16,26 +16,44 @@ INSERT INTO MyCard (
         card_category
     )
 VALUES (
-        'CarteFitness',
+        'Manger & bouger',
         'https://source.unsplash.com/random/1000x1000/?fitness',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'Savez vous que même un peu de sport pouvait réduire le stress, améliorer la qualité du sommeil, et agir comme un antidépresseur ?',
         'Fitness'
     ),
     (
-        'Carte jardinage',
+        'Le Jardinage',
         'https://source.unsplash.com/random/1000x1000/?garden',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'Le jardinage réduit le stress et favorise le bien-être mental.',
         'Main verte'
     ),
     (
-        'Carte test',
+        'Moins de stress',
+        'https://source.unsplash.com/random/1000x1000/?fitness',
+        "L'exercice physique aide à gérer le stress et à réduire l'anxiété.",
+        'Fitness'
+    ),
+    (
+        'Connexion Sociale',
+        'https://source.unsplash.com/random/1000x1000/?music',
+        "La musique rassemble les gens et favorise les interactions sociales.",
+        'Music'
+    ),
+    (
+        "Esprit ouvert ",
         'https://source.unsplash.com/random/1000x1000/?philosophie',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        "La philosophie encourage l'ouverture d'esprit et la tolérance envers les points de vue.",
         'Philosophie'
     ),
     (
-        'Carte Motivation',
-        'https://source.unsplash.com/random/1000x1000/?ecologie',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-        'Ecologie'
+        'Meilleur alimentation',
+        'https://source.unsplash.com/random/1000x1000/?garden',
+        "Cultiver ses propres fruits et légumes offre une source d'aliments frais et sains.",
+        'Main verte'
+    ),
+    (
+        'Être confiant',
+        'https://source.unsplash.com/random/1000x1000/?sport',
+        "La pratique sportive renforce la confiance en soi et l'estime de soi.",
+        'Fitness'
     );
